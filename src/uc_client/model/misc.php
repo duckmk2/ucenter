@@ -71,7 +71,7 @@ class miscmodel {
 		$port = !empty($matches['port']) ? $matches['port'] : 80;
 
 		if($post) {
-			$out = "POST $path HTTP/1.0\r\n";
+			$out = "POST $path HTTP/1.1\r\n";
 			$out .= "Accept: */*\r\n";
 			//$out .= "Referer: $boardurl\r\n";
 			$out .= "Accept-Language: zh-cn\r\n";
@@ -85,7 +85,7 @@ class miscmodel {
 			$out .= "Cookie: $cookie\r\n\r\n";
 			$out .= $post;
 		} else {
-			$out = "GET $path HTTP/1.0\r\n";
+			$out = "GET $path HTTP/1.1\r\n";
 			$out .= "Accept: */*\r\n";
 			//$out .= "Referer: $boardurl\r\n";
 			$out .= "Accept-Language: zh-cn\r\n";
