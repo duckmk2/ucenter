@@ -1,4 +1,4 @@
-<?php namespace Ershimei\Ucenter\Contracts;
+<?php namespace Duckmk2\Ucenter\Contracts;
 
 interface Api
 {

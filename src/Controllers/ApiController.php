@@ -1,9 +1,9 @@
-<?php namespace Ershimei\Ucenter\Controllers;
+<?php namespace Duckmk2\Ucenter\Controllers;
 
 use App\Http\Controllers\Controller;
-use Ershimei\Ucenter\Contracts\Api;
+use Duckmk2\Ucenter\Contracts\Api;
 use Request,Config;
-use Ershimei\Ucenter\Services\Help;
+use Duckmk2\Ucenter\Services\Help;
 
 class ApiController extends Controller 
 {

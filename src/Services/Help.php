@@ -1,6 +1,6 @@
 <?php
 
-namespace Ershimei\Ucenter\Services;
+namespace Duckmk2\Ucenter\Services;
 
 trait Help{
 

@@ -1,4 +1,4 @@
-<?php namespace Ershimei\Ucenter\Facades;
+<?php namespace Duckmk2\Ucenter\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

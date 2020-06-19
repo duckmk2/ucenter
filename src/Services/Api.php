@@ -1,8 +1,8 @@
-<?php namespace Ershimei\Ucenter\Services;
+<?php namespace Duckmk2\Ucenter\Services;
 
-use Ershimei\Ucenter\Services\Help;
+use Duckmk2\Ucenter\Services\Help;
 
-class Api implements \Ershimei\Ucenter\Contracts\Api
+class Api implements \Duckmk2\Ucenter\Contracts\Api
 {
     use Help;
 

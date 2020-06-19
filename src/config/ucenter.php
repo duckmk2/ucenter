@@ -15,7 +15,7 @@ return [
     'dbtablepre'     => env('UC_DBTABLEPRE', '`ucenter`.uc_'),
     'dbconnect'      => env('UC_DBCONNECT', '0'),
     'key'            => env('UC_KEY', 'asflkhKFJHGH5648asdfasdfhj9845613asdf'),  //这个是通信密钥，必须和服务端统一【*】
-    'api'            => env('UC_API', 'http://dz.Ershimei.cn/uc_server'),                  //这个是uc_server的服务端地址【*】
+    'api'            => env('UC_API', 'http://dz.Duckmk2.cn/uc_server'),                  //这个是uc_server的服务端地址【*】
     'ip'             => env('UC_IP', '127.0.0.1'),
     'charset'        => env('UC_CHARSET', 'utf-8'),
     'appid'          => env('UC_APPID', '1'),   //这里是应用编号
@@ -25,5 +25,5 @@ return [
     'apifilename'    => env('UC_APIFILENAME', 'uc'),
 
     //这里如果要异步登陆，可以直接继承这个类实现其中的方法，也可以创建app/Service/Ucenter.php(文件放哪里都可以，这里只是推荐) 实现该类实现的接口【*】
-    'service'        => env('UC_SERVICE', 'Ershimei\Ucenter\Services\Api'),
+    'service'        => env('UC_SERVICE', 'Duckmk2\Ucenter\Services\Api'),
 ];

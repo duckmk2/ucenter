@@ -1,4 +1,4 @@
-<?php namespace Ershimei\Ucenter;
+<?php namespace Duckmk2\Ucenter;
 
 use Config,Route;
 
@@ -31,7 +31,7 @@ class Ucenter
     }
 
     public function routes(){
-        Route::any(config('ucenter.url').'/api/'.config('ucenter.apifilename'), '\Ershimei\Ucenter\Controllers\ApiController@run');
+        Route::any(config('ucenter.url').'/api/'.config('ucenter.apifilename'), '\Duckmk2\Ucenter\Controllers\ApiController@run');
     }
 
     public function __call($function, $arguments)

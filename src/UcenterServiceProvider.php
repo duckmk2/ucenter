@@ -1,4 +1,4 @@
-<?php namespace Ershimei\Ucenter;
+<?php namespace Duckmk2\Ucenter;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +30,6 @@ class UcenterServiceProvider extends ServiceProvider
             return new Ucenter;
         });
 
-        $this->app->bind('Ershimei\Ucenter\Contracts\Api', config('ucenter.service'));
+        $this->app->bind('Duckmk2\Ucenter\Contracts\Api', config('ucenter.service'));
     }
 }
