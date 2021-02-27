@@ -187,61 +187,33 @@ function uc_fopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE,
 	$port = !empty($matches['port']) ? $matches['port'] : 80;
 
 	if($post) {
-		$out = "POST $path HTTP/1.0\r\n";
-		$out .= "Accept: */*\r\n";
-		//$out .= "Referer: $boardurl\r\n";
-		$out .= "Accept-Language: zh-cn\r\n";
-		$out .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$out .= "User-Agent: $_SERVER[HTTP_USER_AGENT]\r\n";
-		$out .= "Host: $host\r\n";
-		$out .= 'Content-Length: '.strlen($post)."\r\n";
-		$out .= "Connection: Close\r\n";
-		$out .= "Cache-Control: no-cache\r\n";
-		$out .= "Cookie: $cookie\r\n\r\n";
-		$out .= $post;
+		$options =  array(
+			CURLOPT_TIMEOUT => $timeout,
+			CURLOPT_URL => $host.$path,
+			CURLOPT_POST => true,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_POSTFIELDS => $post,
+			CURLOPT_HTTPHEADER => array('Content-Type: application/x-www-form-urlencoded'),
+			CURLOPT_COOKIE => $cookie,
+		);
 	} else {
-		$out = "GET $path HTTP/1.0\r\n";
-		$out .= "Accept: */*\r\n";
-		//$out .= "Referer: $boardurl\r\n";
-		$out .= "Accept-Language: zh-cn\r\n";
-		$out .= "User-Agent: $_SERVER[HTTP_USER_AGENT]\r\n";
-		$out .= "Host: $host\r\n";
-		$out .= "Connection: Close\r\n";
-		$out .= "Cookie: $cookie\r\n\r\n";
+		$options =  array(
+			CURLOPT_TIMEOUT => $timeout,
+			CURLOPT_URL => $host.$path,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_COOKIE => $cookie,
+		);
 	}
 
-	if(function_exists('fsockopen')) {
-		$fp = @fsockopen(($ip ? $ip : $host), $port, $errno, $errstr, $timeout);
-	} elseif (function_exists('pfsockopen')) {
-		$fp = @pfsockopen(($ip ? $ip : $host), $port, $errno, $errstr, $timeout);
-	} else {
-		$fp = false;
-	}
-	if(!$fp) {
+	$ch = curl_init();
+	curl_setopt_array($ch, $options);
+	$response = curl_exec($ch);
+	curl_close($ch);
+
+	if(!$response) {
 		return '';
 	} else {
-		stream_set_blocking($fp, $block);
-		stream_set_timeout($fp, $timeout);
-		@fwrite($fp, $out);
-		$status = stream_get_meta_data($fp);
-		if(!$status['timed_out']) {
-			while (!feof($fp)) {
-				if(($header = @fgets($fp)) && ($header == "\r\n" ||  $header == "\n")) {
-					break;
-				}
-			}
-			$stop = false;
-			while(!feof($fp) && !$stop) {
-				$data = fread($fp, ($limit == 0 || $limit > 8192 ? 8192 : $limit));
-				$return .= $data;
-				if($limit) {
-					$limit -= strlen($data);
-					$stop = $limit <= 0;
-				}
-			}
-		}
-		@fclose($fp);
-		return $return;
+		return $response;
 	}
 }
 
