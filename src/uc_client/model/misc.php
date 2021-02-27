@@ -78,7 +78,7 @@ class miscmodel {
 				CURLOPT_POST => true,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_POSTFIELDS => $post,
-				CURLOPT_HTTPHEADER => array($encodetype == 'URLENCODE' ? "Content-Type: application/x-www-form-urlencoded" : "Content-Type: multipart/form-data$boundary"),
+				CURLOPT_HTTPHEADER => array($encodetype == 'URLENCODE' ? "Content-Type: application/x-www-form-urlencoded" : "Content-Type: multipart/form-data$boundary",'User-Agent: '.$_SERVER[HTTP_USER_AGENT]),
 				CURLOPT_COOKIE => $cookie,
 			);
 		} else {
@@ -87,6 +87,7 @@ class miscmodel {
 				CURLOPT_URL => $host.$path,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_COOKIE => $cookie,
+				CURLOPT_HTTPHEADER => array('User-Agent: '.$_SERVER[HTTP_USER_AGENT]),
 			);
 		}
 
