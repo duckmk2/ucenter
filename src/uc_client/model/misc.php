@@ -87,7 +87,7 @@ class miscmodel {
 				CURLOPT_URL => $host.$path,
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_COOKIE => $cookie,
-				CURLOPT_HTTPHEADER => array('User-Agent: '.$_SERVER[HTTP_USER_AGENT]),
+				CURLOPT_HTTPHEADER => array('User-Agent: '.$_SERVER['HTTP_USER_AGENT']),
 			);
 		}
 

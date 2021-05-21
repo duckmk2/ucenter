@@ -194,7 +194,7 @@ function uc_fopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE,
 			CURLOPT_POST => true,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_POSTFIELDS => $post,
-			CURLOPT_HTTPHEADER => array('Content-Type: application/x-www-form-urlencoded','User-Agent: '.$_SERVER[HTTP_USER_AGENT]),
+			CURLOPT_HTTPHEADER => array('Content-Type: application/x-www-form-urlencoded','User-Agent: '.$_SERVER['HTTP_USER_AGENT']),
 			CURLOPT_COOKIE => $cookie,
 		);
 	} else {
@@ -203,7 +203,7 @@ function uc_fopen($url, $limit = 0, $post = '', $cookie = '', $bysocket = FALSE,
 			CURLOPT_URL => $host.$path,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_COOKIE => $cookie,
-			CURLOPT_HTTPHEADER => array('User-Agent: '.$_SERVER[HTTP_USER_AGENT]),
+			CURLOPT_HTTPHEADER => array('User-Agent: '.$_SERVER['HTTP_USER_AGENT']),
 		);
 	}
 
