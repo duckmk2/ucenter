@@ -23,7 +23,7 @@ define('UC_API_FUNC', UC_CONNECT == 'mysql' ? 'uc_api_mysql' : 'uc_api_post');
 $GLOBALS['uc_controls'] = array();
 
 function uc_addslashes($string, $force = 0, $strip = FALSE) {
-	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
+	//!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 	if(!MAGIC_QUOTES_GPC || $force) {
 		if(is_array($string)) {
 			foreach($string as $key => $val) {
@@ -43,7 +43,7 @@ if(!function_exists('daddslashes')) {
 }
 
 function uc_stripslashes($string) {
-	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
+	//!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 	if(MAGIC_QUOTES_GPC) {
 		return stripslashes($string);
 	} else {
