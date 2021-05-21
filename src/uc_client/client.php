@@ -20,6 +20,7 @@ define('UC_ROOT', substr(__FILE__, 0, -10));
 define('UC_DATADIR', UC_ROOT.'./data/');
 define('UC_DATAURL', UC_API.'/data');
 define('UC_API_FUNC', UC_CONNECT == 'mysql' ? 'uc_api_mysql' : 'uc_api_post');
+define('MAGIC_QUOTES_GPC', null);
 $GLOBALS['uc_controls'] = array();
 
 function uc_addslashes($string, $force = 0, $strip = FALSE) {
